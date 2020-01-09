@@ -1,8 +1,19 @@
 <script>
+	// 配置区
+	var timeout = 1;	//刷新时间
+	var windosNum = 10;	//窗口个数
+	current = "http://www.xinguxiang.cn/Home/ArticlePage?newsid=641";	//网址
+	//刷访问量时 窗口不要开太多 否则浏览器可能会限制活跃端口
+	//建议10个
+	// 适用于: 刷浏览量 or 秒杀
+	
 	welcome = "author --MaserMz";
 	console.log(welcome);
-	// 适用于: 刷浏览量 or 秒杀 
-	
+</script>
+
+
+<script>
+	// 基础支持
 	function setCookie(name,value){
 		var Days = 30;
 		var exp = new Date();
@@ -17,13 +28,11 @@
 		else
 		return null;
 	}
-	
-	var timeout = 1;	//刷新时间
-	var windosNum = 10;	//窗口个数
-	//刷访问量时 窗口不要开太多 否则浏览器可能会限制活跃端口
-	//建议10个
+</script>
+
+
+<script>
 	setCookie(windosNum,1);
-	current = "http://www.xinguxiang.cn/Home/ArticlePage?newsid=641";	//网址
 	if ((num = getCookie("windosNum")) <= windosNum) {
 		setCookie("windosNum",++num);
 		window.open(location.href,"_blank");
@@ -47,7 +56,9 @@
 	　　　　write(frame);
 	　　
 	　　　　//此处输入代执行的代码
-	// 　　　　setInterval(function(){ location.href="http://www.xinguxiang.cn/Home/ArticlePage?newsid=641" },1000);
+			
+			
+
 	      // 关闭上面的窗口
 	　　　　void(close());
 	　　};
