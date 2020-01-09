@@ -1,0 +1,55 @@
+<script>
+	welcome = "author --MaserMz";
+	console.log(welcome);
+	// 适用于: 刷浏览量 or 秒杀 
+	
+	function setCookie(name,value){
+		var Days = 30;
+		var exp = new Date();
+		exp.setTime(exp.getTime() + Days*24*60*60*30);
+		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	}
+	
+	function getCookie(name){
+		var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg))
+		return unescape(arr[2]);
+		else
+		return null;
+	}
+	
+	var timeout = 1;	//刷新时间
+	var windosNum = 10;	//窗口个数
+	//刷访问量时 窗口不要开太多 否则浏览器可能会限制活跃端口
+	//建议10个
+	setCookie(windosNum,1);
+	current = "http://www.xinguxiang.cn/Home/ArticlePage?newsid=641";	//网址
+	if ((num = getCookie("windosNum")) <= windosNum) {
+		setCookie("windosNum",++num);
+		window.open(location.href,"_blank");
+	}
+	if(timeout > 0)
+	{
+	　　setTimeout('reload()', 1000 * timeout);
+	}
+	else
+	{
+	　　location.replace(current);
+	}
+	
+	function reload()
+	{
+	　　setTimeout('reload()', 1000 * timeout);
+	　　var frame = '<frameset cols=\'*\'>\n<frame src=\'' + current + '\' /></frameset>';
+	　　with(document)
+	　　{
+	       // 引用document对象，调用write方法写入框架，打开新窗口
+	　　　　write(frame);
+	　　
+	　　　　//此处输入代执行的代码
+	// 　　　　setInterval(function(){ location.href="http://www.xinguxiang.cn/Home/ArticlePage?newsid=641" },1000);
+	      // 关闭上面的窗口
+	　　　　void(close());
+	　　};
+	}
+</script>
